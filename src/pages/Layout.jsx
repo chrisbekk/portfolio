@@ -1,10 +1,18 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 export const Layout = () => {
   return (
-    <div>
-      HEADER AND FOOTER IS HERE
-      <Outlet />
+    <div className="bg-neutral-800 flex flex-col min-h-screen">
+      <header>
+        NAVBAR
+        <Link to={'/'}>ROOT</Link>
+        <Link to={'/site'}>HERO</Link>
+        <Link to={'/pages/home'}>HOME</Link>
+      </header>
+      <main>
+        <Outlet />
+      </main>
+      <footer>This is a footer element</footer>
     </div>
   );
 };
