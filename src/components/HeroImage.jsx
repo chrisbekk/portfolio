@@ -69,7 +69,7 @@ export const HeroImage = () => {
         this.centerY = this.height * 0.5;
         this.x = this.centerX - this.image.width * 0.5;
         this.y = this.centerY - this.image.height * 0.5;
-        this.gap = 4;
+        this.gap = 2;
         this.mouse = {
           radius: 3000,
           x: undefined,
