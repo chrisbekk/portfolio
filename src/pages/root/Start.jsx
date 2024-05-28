@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { LoadScreen } from '../../components/LoadScreen';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Landing } from '../../components/Landing';
 
 export const Start = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,19 +17,23 @@ export const Start = () => {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },
   };
+
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          variants={variants}
-          initial="initial"
-          animate="visible"
-          exit="hidden"
-        >
-          HERO IMAGE IS HERE <Link to={'/'}>ROOT</Link>
-          <Link to={'/pages/home'}>Home</Link>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <>
+      <AnimatePresence>
+        {isVisible ? (
+          <motion.div
+            variants={variants}
+            initial="initial"
+            animate="visible"
+            exit="hidden"
+          >
+            <Landing />
+          </motion.div>
+        ) : (
+          <LoadScreen />
+        )}
+      </AnimatePresence>
+    </>
   );
 };
