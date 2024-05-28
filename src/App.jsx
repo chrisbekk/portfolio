@@ -2,7 +2,7 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
 function App() {
   return (
-    <div className="bg-zinc-800">
+    <div className="font-primary">
       <RouterProvider router={router}></RouterProvider>
     </div>
   );

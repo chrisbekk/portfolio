@@ -1,9 +1,12 @@
 import React from 'react';
 import { Loading } from './Loading';
-export const LoadScreen = () => {
+import { Progress } from './Progress';
+export const LoadScreen = ({ duration }) => {
   return (
-    <div className="bg-zinc-900 text-zinc-400 h-screen flex items-end pb-40 justify-center overflow-hidden">
-      <Loading />
+    <div className="bg-black text-zinc-400 h-screen flex-col flex justify-end pb-40 items-center overflow-hidden">
+      <div>loading...</div>
+      {/* <Loading /> */}
+      <Progress duration={duration} />
     </div>
   );
 };
