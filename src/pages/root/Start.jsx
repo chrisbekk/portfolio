@@ -3,6 +3,7 @@ import { LoadScreen } from '../../components/LoadScreen';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Landing } from '../../components/Landing';
+import { Hero } from '../../components/Hero';
 
 export const Start = () => {
   const [isVisible, setIsVisible] = useState(false);
