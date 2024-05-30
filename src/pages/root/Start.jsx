@@ -7,9 +7,10 @@ export const Start = () => {
   const [isVisible, setIsVisible] = useState(false);
   const DURATION = 5;
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsVisible(true);
     }, DURATION * 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   const variants = {
