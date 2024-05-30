@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { animate, delay, motion } from 'framer-motion';
-import { abs } from 'three/examples/jsm/nodes/Nodes.js';
+import { motion } from 'framer-motion';
+
 export const Card = () => {
   const [isActive, setIsActive] = useState(false);
   const variants = {
@@ -8,23 +8,26 @@ export const Card = () => {
       height: 'fit-content',
       width: '100vw',
       position: 'relative',
+      zIndex: 'auto',
+      transition: { type: 'ease', delay: 0.5 },
     },
     animate: {
       height: '100vh',
       position: 'absolute',
       top: 0,
+      zIndex: '100',
       transition: { type: 'ease', delay: 0.15 },
-    },
-    exit: {
-      height: 'fit-content',
-      width: 'fit-content',
-      position: 'relative',
-      transition: { type: 'ease', delay: 0.25 },
     },
   };
 
   const cardVariants = {
-    initial: { height: '100px', width: '100px' },
+    initial: {
+      height: '100px',
+      width: '100px',
+      y: '0',
+      x: '0',
+      transition: { type: 'ease' },
+    },
     animate: {
       height: '200px',
       width: '200px',
