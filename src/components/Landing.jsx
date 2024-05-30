@@ -1,10 +1,17 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const Landing = () => {
   const [move, setMove] = useState(false);
   const navigate = useNavigate();
+  const effectRef = useRef(null); // Use a ref to hold the effect instance
+  const animateRef = useRef(null); // Use a ref to hold the animation frame ID
+
+  const variants = {
+    initial: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
 
   useEffect(() => {
     if (move) {
@@ -14,12 +21,7 @@ export const Landing = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [move]);
-
-  const variants = {
-    initial: { opacity: 1 },
-    exit: { opacity: 0 },
-  };
+  }, [move, navigate]);
 
   useEffect(() => {
     const canvas = document.getElementById('canvas');
@@ -96,11 +98,14 @@ export const Landing = () => {
           x: undefined,
           y: undefined,
         };
-        window.addEventListener('mousemove', event => {
-          this.mouse.x = event.x;
-          this.mouse.y = event.y;
-        });
+        window.addEventListener('mousemove', this.handleMouseMove);
       }
+
+      handleMouseMove = event => {
+        this.mouse.x = event.x;
+        this.mouse.y = event.y;
+      };
+
       init(context) {
         context.drawImage(this.image, this.x, this.y);
         const pixels = context.getImageData(0, 0, this.width, this.height).data;
@@ -118,43 +123,64 @@ export const Landing = () => {
           }
         }
       }
+
       draw(context) {
         this.particlesArray.forEach(particle => particle.draw(context));
       }
+
       update() {
         this.particlesArray.forEach(particle => particle.update());
       }
+
       warp() {
         this.particlesArray.forEach(particle => particle.warp());
       }
+
+      setSize(width, height) {
+        this.width = width;
+        this.height = height;
+        this.centerX = this.width * 0.5;
+        this.centerY = this.height * 0.4;
+        this.x = this.centerX - this.image.width * 0.5;
+        this.y = this.centerY - this.image.height * 0.5;
+      }
+
+      cleanup() {
+        window.removeEventListener('mousemove', this.handleMouseMove);
+      }
     }
 
-    const createEffect = () => {
-      const effect = new Effect(canvas.width, canvas.height);
-      effect.init(ctx);
-      return effect;
-    };
-
-    let effect = createEffect();
+    effectRef.current = new Effect(canvas.width, canvas.height);
+    effectRef.current.init(ctx);
 
     const handleResize = () => {
       setCanvasSize();
-      effect = createEffect();
+      effectRef.current.setSize(canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+      ctx.drawImage(
+        effectRef.current.image,
+        effectRef.current.x,
+        effectRef.current.y,
+      ); // Redraw the image
     };
 
     window.addEventListener('resize', handleResize);
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      effect.draw(ctx);
-      effect.update();
-      requestAnimationFrame(animate);
+      effectRef.current.draw(ctx);
+      effectRef.current.update();
+      animateRef.current = requestAnimationFrame(animate);
     };
-    //effect.warp();
-    animate();
+
+    animateRef.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      effectRef.current.cleanup();
+      if (animateRef.current) {
+        cancelAnimationFrame(animateRef.current);
+      }
     };
   }, []);
 
