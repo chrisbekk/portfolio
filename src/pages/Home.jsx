@@ -1,12 +1,14 @@
 import React from 'react';
-import { Card } from '../components/Card';
+import { Projects } from '../components/Projects';
+
 export const Home = () => {
   return (
     <div className="bg-black">
-      <div className="flex flex-col gap-5">
-        <Card />
-        <Card />
-      </div>
+      <section className="h-[50vh]"></section>
+      <section className="">
+        <h1 className="text-2xl sm:text-4xl">Projects</h1>
+        <Projects />
+      </section>
     </div>
   );
 };

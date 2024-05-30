@@ -7,8 +7,6 @@ export const Navbar = () => {
   const { scrollY } = useScroll();
 
   function update(latest, prev) {
-    console.log('LATEST:', latest);
-    console.log('PREV:', prev);
     if (latest < prev) {
       setHidden(false);
     } else if (latest > 100 && latest > prev) {

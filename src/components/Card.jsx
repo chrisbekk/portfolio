@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-export const Card = () => {
+export const Card = ({ title, description, image, links }) => {
   const [isActive, setIsActive] = useState(false);
   const variants = {
     initial: {
       height: 'fit-content',
-      width: '100vw',
+      width: '100%',
       position: 'relative',
       zIndex: 'auto',
       transition: { type: 'ease', delay: 0.5 },
     },
     animate: {
       height: '100vh',
+      width: '100vw',
       position: 'absolute',
       top: 0,
       zIndex: '100',
@@ -53,7 +54,7 @@ export const Card = () => {
           animate={isActive ? 'animate' : 'initial'}
           className="size-20 bg-green-300"
         ></motion.div>
-        <motion.p
+        <motion.h1
           variants={cardVariants}
           initial="initial"
           animate={
@@ -66,8 +67,8 @@ export const Card = () => {
               : 'initial'
           }
         >
-          Project Card
-        </motion.p>
+          {title}
+        </motion.h1>
       </div>
     </motion.div>
   );

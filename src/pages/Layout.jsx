@@ -8,7 +8,7 @@ export const Layout = () => {
       <header className="">
         <Navbar />
       </header>
-      <main className="min-h-[300vh] mt-28">
+      <main className="mt-28">
         <Outlet />
       </main>
       <footer className="mt-auto">
