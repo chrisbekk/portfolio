@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         primary: ['JetBrains Mono', 'monospace'],
       },
+      colors: {
+        custom_green: '#A7C07F',
+      },
     },
   },
   plugins: [],
