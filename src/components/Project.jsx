@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, animate, motion } from 'framer-motion';
+import { ProjectLink } from './ProjectLink';
+import { FaGithub } from 'react-icons/fa';
+import { BiLogoNetlify } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
+import { Tags } from './Tags';
 export const Project = ({ isActive, data }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,21 +44,36 @@ export const Project = ({ isActive, data }) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="text-white font-primary sm:flex sm:items-center lg:justify-center"
+      className="text-white font-primary flex items-center"
     >
-      <motion.div className="border border-custom_green max-w-[1024px] lg:mx-auto h-[80vh]">
-        <div className="lg:grid lg:grid-cols-[0.4fr_0.6fr]">
+      <motion.div className="px-2 lg:rounded-t-2xl max-w-[1024px] lg:mx-auto">
+        <div className="">
           <div className="">
             <img
               src={data?.media.url}
               alt={data?.media.alt}
-              className="w-full h-full"
+              className="w-full h-full lg:rounded-t-2xl"
             />
           </div>
-          <div>
-            <h1>{data?.title}</h1>
-            <p>{data?.description}</p>
+          <div className="mt-3">
+            <h1 className="text-4xl lg:text-5xl text-custom_orange">
+              {data?.title}
+            </h1>
+            <div className="my-3">
+              <Tags tags={data?.tags} />
+            </div>
+            <p className="text-lg">{data?.description}</p>
           </div>
+        </div>
+        <div className="w-full h-[50px] bg-[url('/statusbar.png')] flex justify-around bg-center bg-origin-content bg-no-repeat bg-cover mt-16">
+          <ProjectLink path={data?.links.repo}>
+            <FaGithub className="size-10 text-custom_brown" />
+            <p className="font-mono">Github</p>
+          </ProjectLink>
+          <ProjectLink path={data?.links.site}>
+            <BiLogoNetlify className="size-10 text-custom_brown" />
+            <p className="font-mono">Deployed Link</p>
+          </ProjectLink>
         </div>
       </motion.div>
     </motion.div>,
