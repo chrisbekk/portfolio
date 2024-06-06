@@ -5,7 +5,7 @@ import { Hero } from '../components/Hero';
 
 export const Home = () => {
   return (
-    <div className="bg-black">
+    <div className="bg-zinc-950">
       <section className="mb-10">
         <Hero />
       </section>
