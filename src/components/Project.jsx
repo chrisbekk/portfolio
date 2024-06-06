@@ -44,9 +44,9 @@ export const Project = ({ isActive, data }) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="text-white font-primary flex items-center"
+      className="text-white font-primary"
     >
-      <motion.div className="px-2 lg:rounded-t-2xl max-w-[1024px] lg:mx-auto">
+      <motion.div className="px-2 lg:rounded-t-2xl max-w-[1024px] lg:mx-auto border border-green-300">
         <div className="">
           <div className="">
             <img
