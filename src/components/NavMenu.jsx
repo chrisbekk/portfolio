@@ -1,11 +1,6 @@
-import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 export const NavMenu = ({ toggleMenu, setToggleMenu }) => {
-  const handleClose = e => {
-    console.log(e.currentTarget);
-    setToggleMenu(false);
-  };
   useEffect(() => {
     if (toggleMenu) {
       document.body.style.overflow = 'hidden';
@@ -49,11 +44,12 @@ export const NavMenu = ({ toggleMenu, setToggleMenu }) => {
       y: 0,
     },
   };
+
   return (
     <AnimatePresence>
       {toggleMenu && (
         <motion.div
-          onClick={handleClose}
+          onClick={() => setToggleMenu(false)}
           variants={backdropVariants}
           initial="initial"
           animate="show"
@@ -66,9 +62,15 @@ export const NavMenu = ({ toggleMenu, setToggleMenu }) => {
             initial="initial"
             animate="show"
             exit="exit"
-            className="bg-neutral-950 w-full"
+            className="bg-neutral-950 w-full flex items-center justify-center"
           >
-            <button onClick={() => setToggleMenu(false)}>CLOSE</button>
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { delay: 0.75 } }}
+              className="font-mono text-red-500 text-xl sm:text-4xl -rotate-[22deg]"
+            >
+              Under Construction
+            </motion.h1>
           </motion.div>
         </motion.div>
       )}

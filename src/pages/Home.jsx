@@ -6,7 +6,7 @@ import { Hero } from '../components/Hero';
 export const Home = () => {
   return (
     <div className="bg-black">
-      <section className="">
+      <section className="mb-10">
         <Hero />
       </section>
       <section className="container mx-auto">
