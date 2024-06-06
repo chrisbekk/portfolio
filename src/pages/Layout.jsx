@@ -1,18 +1,19 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
 export const Layout = () => {
   return (
-    <div className="bg-neutral-800 flex flex-col min-h-screen">
-      <header>
-        NAVBAR
-        <Link to={'/'}>ROOT</Link>
-        <Link to={'/site'}>HERO</Link>
-        <Link to={'/pages/home'}>HOME</Link>
+    <div className="bg-black flex text-white flex-col min-h-screen">
+      <header className="">
+        <Navbar />
       </header>
-      <main>
+      <main className="">
         <Outlet />
       </main>
-      <footer>This is a footer element</footer>
+      <footer className="mt-auto">
+        <Footer />
+      </footer>
     </div>
   );
 };
