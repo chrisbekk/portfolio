@@ -1,12 +1,13 @@
 import React from 'react';
 import { Projects } from '../components/Projects';
 import { Landing } from '../components/Landing';
+import { Hero } from '../components/Hero';
 
 export const Home = () => {
   return (
     <div className="bg-black">
       <section className="">
-        <Landing />
+        <Hero />
       </section>
       <section className="container mx-auto">
         <div className="mx-2 md:mx-0">

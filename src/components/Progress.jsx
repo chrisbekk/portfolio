@@ -13,12 +13,12 @@ export const Progress = ({ duration }) => {
     hidden: { opacity: 0 },
   };
   return (
-    <div className="border border-zinc-400 h-6 w-80">
+    <div className="border border-custom_mg_orange h-6 w-80 absolute bottom-20 left-[50vw] -translate-x-[50%] ">
       <motion.div
         variants={variants}
         initial="initial"
         animate="visible"
-        className="h-full bg-zinc-300"
+        className="h-full bg-custom_mg_orange"
       ></motion.div>
     </div>
   );

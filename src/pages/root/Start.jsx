@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { LoadScreen } from '../../components/LoadScreen';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Landing } from '../../components/Landing';
+import { Progress } from '../../components/Progress';
+import { StartButton } from '../../components/StartButton';
 
 export const Start = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [move, setMove] = useState(false);
   const DURATION = 5;
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -13,28 +16,14 @@ export const Start = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const variants = {
-    initial: { opacity: 0 },
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 },
-  };
-
   return (
-    <>
-      <AnimatePresence>
-        {isVisible ? (
-          <motion.div
-            variants={variants}
-            initial="initial"
-            animate="visible"
-            exit="hidden"
-          >
-            <Landing />
-          </motion.div>
-        ) : (
-          <LoadScreen duration={DURATION} />
-        )}
-      </AnimatePresence>
-    </>
+    <div className="relative">
+      <Landing move={move} />
+      {!isVisible ? (
+        <Progress duration={DURATION} />
+      ) : (
+        <StartButton setMove={setMove} />
+      )}
+    </div>
   );
 };
