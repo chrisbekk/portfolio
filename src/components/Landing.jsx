@@ -180,7 +180,7 @@ export const Landing = ({ move }) => {
   }, []);
 
   return (
-    <div className="relative bg-neutral-950 h-screen">
+    <div className="relative bg-neutral-950 h-full ">
       <AnimatePresence>
         {!move && (
           <motion.div

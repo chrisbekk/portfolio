@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LoadScreen } from '../../components/LoadScreen';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import { Landing } from '../../components/Landing';
 import { Progress } from '../../components/Progress';

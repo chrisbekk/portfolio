@@ -21,7 +21,7 @@ export const StartButton = ({ setMove }) => {
       className="absolute bottom-20 left-[50vw] -translate-x-[50%] rounded-lg text-custom_mg_orange font-mono text-3xl border border-custom_mg_orange"
     >
       <motion.p variants={textVariants} initial="initial" animate="animate">
-        START
+        ENTER
       </motion.p>
     </motion.button>
   );

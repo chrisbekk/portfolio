@@ -9,7 +9,7 @@ export const Home = () => {
       <section className="mb-10">
         <Hero />
       </section>
-      <section className="container mx-auto">
+      <section className="container mx-auto mt-28">
         <div className="mx-2 md:mx-0">
           {' '}
           <h1 className="text-3xl sm:text-4xl md:text-5xl mb-8 font-semibold">
