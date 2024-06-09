@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 export const NavMenu = ({ toggleMenu, setToggleMenu }) => {
   useEffect(() => {
     if (toggleMenu) {
@@ -67,9 +68,9 @@ export const NavMenu = ({ toggleMenu, setToggleMenu }) => {
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.75 } }}
-              className="font-mono text-red-500 text-xl sm:text-4xl -rotate-[22deg]"
+              className="font-mono text-xl sm:text-4xl"
             >
-              Under Construction
+              <Link to={'/'}>Root</Link>
             </motion.h1>
           </motion.div>
         </motion.div>
