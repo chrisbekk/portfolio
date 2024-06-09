@@ -32,7 +32,9 @@ export const Navbar = () => {
       <div
         className={`${!toggleMenu ? 'container w-full ' : 'w-screen'} relative mx-auto h-full  flex items-center justify-between`}
       >
-        <h1 className="pl-4">{toggleMenu ? '' : 'Navbar'}</h1>
+        <h1 className="pl-4">
+          {toggleMenu ? '' : <h1 className="text-xl font-light">DSOLVE</h1>}
+        </h1>
         <nav>
           <button className="pr-4" onClick={() => setToggleMenu(prev => !prev)}>
             {toggleMenu ? '' : 'Menu'}

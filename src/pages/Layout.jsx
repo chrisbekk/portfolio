@@ -4,11 +4,11 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 export const Layout = () => {
   return (
-    <div className="bg-black flex text-white flex-col min-h-screen">
+    <div className="bg-zinc-950 flex text-white flex-col min-h-screen">
       <header className="">
         <Navbar />
       </header>
-      <main className="">
+      <main className="mb-20">
         <Outlet />
       </main>
       <footer className="mt-auto">
